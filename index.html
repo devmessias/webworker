@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>WebWorker tutorial para tablelles</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Exemplificando o uso de WebWorkers">
+        <meta name="author" content="Bruno Messias">
+        <!-- CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <style type="text/css">
+/* Sticky footer styles
+   -------------------------------------------------- */
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+      /* Wrapper for page content to push down footer */
+      #wrap {
+          min-height: 100%;
+          height: auto !important;
+          height: 100%;
+          /* Negative indent footer by it's height */
+          margin: 0 auto -60px;
+      }
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+          height: 60px;
+      }
+      #footer {
+          background-color: #f5f5f5;
+      }
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+          #footer {
+              margin-left: -20px;
+              margin-right: -20px;
+              padding-left: 20px;
+              padding-right: 20px;
+          }
+      }
+      /* Custom page CSS
+         -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+      .container {
+          width: auto;
+          max-width: 680px;
+      }
+      .container .credit {
+          margin: 20px 0;
+      }
+        </style>
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Part 1: Wrap all page content here -->
+        <div id="wrap">
+            <!-- Begin page content -->
+            <div class="container">
+                <div class="page-header">
+                    <h3>Web Worker</h3>
+                </div>
+                <p class="lead" style="text-align: center;">
+                <button class="btn btn-success btn-large"
+                        onclick="javascript:WebWorker.criar();">Criar Web Worker</button>
+                <button class="btn btn-large"
+                        onclick="javascript:WebWorker.hi();">Dizer oi para o  Web Worker</button>
+                <button class="btn btn-danger btn-large"
+                        onclick="javascript:WebWorker.close();">Finalizar Web
+                        Worker</button>
+
+                </p>
+                <div class="jumbotron">
+                    <div id='workerDialogue'>
+                    </div>
+                    <div class="page-header">
+                        <h3>Sorting 50K Array with Bubble Sort<h3>
+                                <h3>
+                            <small>
+                                Exemplo criado por 
+                                <a
+                                   href="http://afshinm.name/" target="_blank">Afshin
+                                   Mehrabani</a> / <a href="https://github.com/afshinm/50k"
+                                                      target="_blank">Github</a>
+
+
+                            </small>
+                        </h3>
+                    </div>
+                    <p class="lead" style="text-align: center;">
+                    <button class="btn btn-large" onclick="javascript:nonWebWorker();">Without Web Worker</button>
+                    <button class="btn btn-success btn-large"
+                            onclick="javascript:WebWorker.sort();">With Web Worker</button>
+                    </p>
+                    <div id="progressbar" class="progress progress-striped active hide">
+                        <div class="bar" style="width: 100%;"></div>
+                    </div>
+                    <div id="resultBox" class="well well-large hide">
+                        <p class="muted">
+                        50K Array sorted in:
+                        </p>
+                        <h1 id="timespent"></h1>
+                        <p id="withoutWW" style="font-size: 18px;font-weight: 200;line-height: 24px;color: inherit;margin-top:20px" class="hide">
+                        As you can see, without Web Worker, your browser maybe able to sort the 50K Array but you can't work with your browser while sorting and also your browser won't render anything until sorting ends, that's why you can't see the animated progress bar in the page.
+                        </p>
+                        <p id="withWW" style="font-size: 18px;font-weight: 200;line-height: 24px;color: inherit;margin-top:20px" class="hide">
+                        Your browser sorted 50K Array without any crash or lagging, because your browser supports Web Worker. When you do a job with Web Worker, it's just like when you run a program in another thread. Also you can see the animated progress bar while sorting.
+                        </p>
+                    </div>
+                </div>
+                <div id="push"></div>
+            </div>
+            <script src="index.js" ></script>
+            <script src="jquery.min.js" ></script>
+    </body>
+</html>
